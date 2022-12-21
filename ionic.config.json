@@ -1,0 +1,8 @@
+{
+  "name": "pipesemanauno",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+  
+}

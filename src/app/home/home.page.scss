@@ -1,0 +1,19 @@
+ion-card{
+  text-align: center;
+  margin-top: 30px;
+}
+ion-card-header{
+  border-top: 3px solid #0080FF;
+  border-top-right-radius: 10px;
+  border-left: 3px solid #0080FF;
+  border-top-left-radius: 10px;
+  border-right: 3px solid #0080FF;
+}
+
+ ion-card-content{
+  border-bottom: 3px solid #0080FF;
+  border-bottom-right-radius: 10px;
+  border-left: 3px solid #0080FF;
+  border-bottom-left-radius: 10px;
+  border-right: 3px solid #0080FF;
+}
