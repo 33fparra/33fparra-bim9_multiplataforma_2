@@ -1,26 +1,24 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-back-button text="Volver" defaultHref="/"></ion-back-button>
-    </ion-buttons>
-    <ion-title>Login</ion-title>
+
+    <ion-title style="text-align: center;">Login</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content color="dark">
   <br>
-  <h2 class="titulo"><strong>Ingreso de Usuarios</strong></h2>
+  <h2 class="titulo" style="text-align: center;"><strong>Ingreso de Usuarios</strong></h2>
   <ion-item color="dark" style="margin-top: 50px;">
     <ion-label></ion-label>
-    <ion-input placeholder="Nombre de usuario" required=""></ion-input>
+    <ion-input placeholder="Nombre de usuario" type="text" [(ngModel)]="username" ng-required="true"></ion-input>
   </ion-item>
   <ion-item color="dark">
     <ion-label></ion-label>
-    <ion-input placeholder="Contraseña"></ion-input>
+    <ion-input placeholder="Contraseña" type="password" [(ngModel)]="password" ng-required="true"></ion-input>
   </ion-item>
   <br>
-  <ion-button expand="block" color="primary" routerLink="/main">Ingresar</ion-button>
-  <ion-button expand="block" color="danger" routerLink="/">Volver</ion-button>
+  <ion-button expand="block" color="primary" (click)="login()">Ingresar</ion-button>
+  <ion-button expand="block" color="warning" style="color: aliceblue !important;" routerLink="/home">Salir</ion-button>
   <ion-item color="dark">
     <p style="text-align: center;">Para registrarte haz click <a href="/registro">aqui</a></p>
   </ion-item>
@@ -29,6 +27,6 @@
 <!-- Footer -->
 <ion-footer class="ion-no-border" mode="ios">
   <ion-toolbar color="primary">
-    <ion-title size="small">Developed by Felipe Parra</ion-title>
+    <ion-title size="small">Developed by Pipe Parra</ion-title>
   </ion-toolbar>
 </ion-footer>

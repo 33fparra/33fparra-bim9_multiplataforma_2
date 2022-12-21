@@ -18,63 +18,36 @@
 
 <ion-content color="dark">
   <ion-menu side="start" menuId="menu" contentId="main">
-    <ion-header>
-      <ion-toolbar color="primary">
-        <ion-title>Menu</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content>
-      <ion-list>
-        <ion-item>
-          <ion-icon name="information-circle"></ion-icon>
-          Informacion
+    <ion-content color="dark">
+      <ion-list style="background-color: rgb(238, 238, 238);">
+        <ion-item routerLink="/navscan" color="dark">
+          <ion-icon name="qr-code-outline" color="primary"></ion-icon>
+          <p style="margin-left: 10px; color: #002b58; font-weight: 800;">Scanner</p>
         </ion-item>
 
-        <ion-item>
-          <ion-icon name="star"></ion-icon>
-          Favoritos
+        <ion-item color="dark" routerLink="/clientes">
+          <ion-icon name="people-outline" color="primary"></ion-icon>
+          <p style="margin-left: 10px; color: #002b58; font-weight: 800;">Clientes</p>
         </ion-item>
 
-        <ion-item>
-          <ion-icon name="send"></ion-icon>
-          Envios
-        </ion-item>
-
-        <ion-item routerLink="/user">
-          <ion-icon name="person"></ion-icon>
-          Cuenta
+        <ion-item color="dark" routerLink="/login">
+          <ion-icon name="log-out-outline" color="danger"></ion-icon>
+          <p style="margin-left: 10px; color: red; font-weight: 800;">Salir</p>
         </ion-item>
 
       </ion-list>
     </ion-content>
   </ion-menu>
+
   <!-- Contenido -->
-  <br>
-  <h4 style="color: #00152a; font-weight: 800;">(Usuario) Has ingresado Correctamente!</h4>
-
-  <h3>Nuestros Proyectos</h3><br>
-  <h4>Proyecto N°1</h4>
-  
-    <ion-card>
-      <img src="../assets/img/proy1.png">
-    </ion-card>
-    <h4>Proyecto N°2</h4>
-    <ion-card>
-      <img src="../assets/img/proy2.png">
-    </ion-card>
-    <h4>Proyecto N°3</h4>
-    <ion-card>
-      <img src="../assets/img/proy3.png">
-    </ion-card>
-
-
-
+  <h5 style="color: #002b58; font-weight: 800;">(Usuario) Estas loggeado</h5>
   <ion-router-outlet id="main"></ion-router-outlet>
+
 </ion-content>
 <!-- Footer -->
 <ion-footer class="ion-no-border" mode="ios">
   <ion-toolbar color="primary">
-    <ion-title size="small">Developed by Felipe Parra</ion-title>
+    <ion-title size="small">Developed by Pipe Parra</ion-title>
   </ion-toolbar>
 </ion-footer>
 

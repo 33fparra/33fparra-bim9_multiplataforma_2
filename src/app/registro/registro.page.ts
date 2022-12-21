@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-import { auth } from 'firebase/app';
+
+
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+
 
 @Component({
   selector: 'app-registro',
@@ -9,50 +12,75 @@ import { auth } from 'firebase/app';
   styleUrls: ['./registro.page.scss'],
 })
 export class RegistroPage implements OnInit {
-  username : string = "";
-  password : string = "";
+
+
+  username: string = "";
+  email: string = "";
+  password: string = "";
   cpassword: string = "";
+  correo: string = "";
 
-  constructor(public alertController: AlertController, private router:Router) { }
 
+
+
+
+  constructor(public alertController: AlertController, private router:Router) {}
   ngOnInit() {
   }
 
-  async registrar() {
-    const {username, password, cpassword} = this
+  async registrar(){
+    const {email,password,cpassword} = this;
     if(password !== cpassword){
-      this.showAlert("Error!", "Las contraseñas no coinciden");
+      this.showAlert("Error", "Las contraseñas no coinciden");
+    }else{
+      try{
+        const auth = getAuth();
+        createUserWithEmailAndPassword(auth, this.email, this.password)
+        .then((userCredential) => {
+        const user = userCredential.user;
+        this.showAlert("Usuario Registrado","Bienvenido "+this.username).then(() => this.router.navigate(['login']));
+        })
+        .catch((error) => {
+        const errorMessage = error.message;
+
+        /* Usar traductor de errores como en login */
+
+        this.showAlert("Error",errorMessage);
+        });
+      } catch(err){
+        this.showAlert("Error",err.message);
+      }
     }
-    try{
-      // const res = await 
-      this.showAlert("Usuario Registrado", "Bienvenido "+username)
-      this.route.navigate(['login'])
-    } catch(err){
-      console.dir(err);
-      this.showAlert("Error", err.message);
-    }
-    // const alert = await this.alertController.create({
-    //   cssClass: 'my-custom-class',
-    //   header: 'Registro',
-    //   message: 'Se ha registrado exitosamente',
-    //   buttons: [
-    //     {
-    //       text: 'Ok',
-    //       id: 'confirm-button',
-    //       handler: () => {
-    //         this.router.navigateByUrl('/login');
-    //       }
-    //     }
-    //   ]
-    // });
-    // await alert.present();
   }
+
+  /* Alerta */
   async showAlert(header:string,message:string){
-    const alert = await this.alert.create({
+    const alert = await this.alertController.create({
       header,
       message,
-      buttons: ["ok"]
+      buttons: ["Ok"]
     });
+    await alert.present();
+  }
+
+
+
+  async presentAlertConfirm() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Registro',
+      message: 'Se ha registrado exitosamente',
+      buttons: [
+        {
+          text: 'Ok',
+          id: 'confirm-button',
+          handler: () => {
+            this.router.navigateByUrl('/login');
+          }
+        }
+      ]
+    });
+
     await alert.present();
   }
 

@@ -3,28 +3,40 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
+
+import * as firebase from 'firebase/app';
+
+import { environment } from 'src/environments/environment';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import firebaseConfig from './firebase';
-import { AngularFireAuthModule } from '@angular/fire/auth';
-import { AngularFireModule } from '@angular/fire';
+import { HttpBackend, HttpClient, HttpHandler, HttpXhrBackend, ɵHttpInterceptingHandler } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { IonicStorageModule } from '@ionic/storage-angular';
 
+import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
+import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
+
+
+//inicializacion de Firebase
+firebase.initializeApp(environment.firebase);
 
 @NgModule({
   declarations: [AppComponent],
-  entryComponents: [],
   imports: [
-    BrowserModule, 
-    IonicModule.forRoot(), 
+    BrowserModule,
+    IonicModule.forRoot(),
     AppRoutingModule,
-    // AngularFireModule.initializeApp(firebaseConfig),
-    // AngularFireAuthModule
-  ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+    IonicStorageModule.forRoot(),
+    FormsModule],
+  providers:[
+    InAppBrowser,
+    BarcodeScanner,
+    HttpClient,
+    HttpXhrBackend,
+    { provide: HttpBackend, useExisting: HttpXhrBackend },
+    { provide: HttpHandler, useClass: ɵHttpInterceptingHandler},
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
-

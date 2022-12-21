@@ -1,19 +1,27 @@
-ion-card{
+#container {
   text-align: center;
-  margin-top: 30px;
-}
-ion-card-header{
-  border-top: 3px solid #0080FF;
-  border-top-right-radius: 10px;
-  border-left: 3px solid #0080FF;
-  border-top-left-radius: 10px;
-  border-right: 3px solid #0080FF;
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
- ion-card-content{
-  border-bottom: 3px solid #0080FF;
-  border-bottom-right-radius: 10px;
-  border-left: 3px solid #0080FF;
-  border-bottom-left-radius: 10px;
-  border-right: 3px solid #0080FF;
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#container p {
+  font-size: 16px;
+  line-height: 22px;
+
+  color: #8c8c8c;
+
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
 }

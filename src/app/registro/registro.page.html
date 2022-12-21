@@ -3,26 +3,32 @@
     <ion-buttons slot="start">
       <ion-back-button text="Volver" defaultHref="/login"></ion-back-button>
     </ion-buttons>
-    <ion-title>Registro</ion-title>
+    <ion-title >Registro</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content color="dark">
-  <h2 class="titulo" style="text-align: center; color: #001e3c;">Ingrese sus datos</h2>
+  <h2 class="titulo" style="text-align: center; color: #0080FF;">Ingrese sus datos</h2>
   <ion-item color="dark" style="margin-top: 20px;">
     <ion-label></ion-label>
-    <ion-input type="text" placeholder="Nombre de usuario" style="text-align: center;" required="" pattern="[a-zA-Z]+" minlength="8" maxlength="10" [(ngModel)]="username"></ion-input>
+    <ion-input placeholder="Nombre" type="text" [(ngModel)]="username" style="text-align: center;" ng-required="true"></ion-input>
+  </ion-item>
+  <ion-item color="dark">
+    <ion-label></ion-label>
+    <ion-input placeholder="Correo" type="email" [(ngModel)]="email" style="text-align: center;" ng-required="true"></ion-input>
   </ion-item>
 
   <ion-item color="dark">
     <ion-label></ion-label>
-    <ion-input type="password" placeholder="Contraseña" style="text-align: center;" required minlength="8" maxlength="16" [(ngModel)]="password"></ion-input>
+    <ion-input placeholder="Contraseña" type="password" [(ngModel)]="password" style="text-align: center;" ng-required="true"></ion-input>
   </ion-item>
 
   <ion-item color="dark">
     <ion-label></ion-label>
-    <ion-input type="password" placeholder="Repite Contraseña" style="text-align: center;" required minlength="8" maxlength="16" [(ngModel)]="cpassword"></ion-input>
+    <ion-input placeholder="Confirmar Contraseña" type="password" [(ngModel)]="cpassword" style="text-align: center;" ng-required="true"></ion-input>
   </ion-item>
+
+
   <ion-button expand="block" color="primary" (click)="registrar()">Registrar</ion-button>
   <ion-button expand="block" color="danger" routerLink="/login">Volver</ion-button>
 
@@ -30,6 +36,6 @@
 <!-- Footer -->
 <ion-footer class="ion-no-border" mode="ios">
   <ion-toolbar color="primary">
-    <ion-title size="small">Developed by Felipe Parra</ion-title>
+    <ion-title size="small">Developed by Pipe Parra</ion-title>
   </ion-toolbar>
 </ion-footer>

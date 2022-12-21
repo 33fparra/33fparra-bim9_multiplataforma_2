@@ -1,8 +1,7 @@
 {
-  "name": "pipesemanauno",
+  "name": "RetailOff",
   "integrations": {
-    "capacitor": {}
+    "cordova": {}
   },
   "type": "angular"
-  
 }

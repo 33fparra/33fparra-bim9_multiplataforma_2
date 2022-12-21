@@ -3,6 +3,7 @@ import { MenuController } from '@ionic/angular';
 import { Router, RouterLink } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.page.html',
@@ -11,10 +12,9 @@ import { AlertController } from '@ionic/angular';
 export class MenuPage implements OnInit {
 
   constructor(public alertController: AlertController, private router:Router, private menuCtrl: MenuController) { }
+//  public text : string;
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
   presionarMenu(){
     this.menuCtrl.toggle();
   }
@@ -37,7 +37,7 @@ export class MenuPage implements OnInit {
           text: 'Salir',
           id: 'confirm-button',
           handler: () => {
-            this.router.navigateByUrl('/');
+            this.router.navigateByUrl('login');
           }
         }
       ]
